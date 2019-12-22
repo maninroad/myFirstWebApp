@@ -60,7 +60,7 @@ public class LoginServlet extends HttpServlet {
      * @param password
      */
     private int verifyLogin(String userName, String password,PrintWriter myout) {
-        User user = UserDAO.queryUser(userName,myout);
+        User user = UserDAO.queryUser(userName);
 
         //账户密码验证
         if(user!=null && password.equals(user.getPassword())){

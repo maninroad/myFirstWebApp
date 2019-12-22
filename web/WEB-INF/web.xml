@@ -4,30 +4,36 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
     <servlet>
-        <servlet-name>DBmanager</servlet-name>
-        <!-- 下面这行是DBManager这个类的定位，“包名”替换为你在前面第4步中创建的包名，区分大小写！！！ -->
-        <servlet-class>net.implementist.myFirstWebApp.DBmanager</servlet-class>
-        <init-param>
-            <param-name>DBUsername</param-name>
-            <!-- 这里是数据库用户名，一般情况下是root，无需改变 -->
-            <param-value>root</param-value>
-        </init-param>
-        <init-param>
-            <param-name>DBPassword</param-name>
-            <!-- 下面这两个标签中间写你的数据库密码，如果没设置就什么也别写，空格也不能有 -->
-            <param-value></param-value>
-        </init-param>
-        <init-param>
-            <param-name>ConnectionURL</param-name>
-            <!-- myfirstapp是《MySQL》博文中强调的数据库的名字 -->
-            <param-value>jdbc:mysql://localhost:3306/myfirstwebapp?characterEncoding=utf8</param-value>
-        </init-param>
-        <!-- 下面这行很重要，指示服务器在启动时立即加载这个Servlet -->
-        <load-on-startup>0</load-on-startup>
-    </servlet>
-    <servlet>
         <servlet-name>LoginServlet</servlet-name>
         <servlet-class>net.implementist.myFirstWebApp.LoginServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>QueryPersonSportsInfoServlet</servlet-name>
+        <servlet-class>net.implementist.myFirstWebApp.QueryPersonSportsInfoServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SearchSomeStepServlet</servlet-name>
+        <servlet-class>net.implementist.myFirstWebApp.SearchSomeStepServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>QueryStepByIdServlet</servlet-name>
+        <servlet-class>net.implementist.myFirstWebApp.QueryStepByIdServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateStepServlet</servlet-name>
+        <servlet-class>net.implementist.myFirstWebApp.UpdateStepServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>InsertStepServlet</servlet-name>
+        <servlet-class>net.implementist.myFirstWebApp.InsertStepServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>InsertPersonSportsInfoServlet</servlet-name>
+        <servlet-class>net.implementist.myFirstWebApp.InsertPersonSportsInfoServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>QueryPersonSportsInfoOnSomeDayServlet</servlet-name>
+        <servlet-class>net.implementist.myFirstWebApp.QueryPersonSportsInfoOnSomeDayServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>RegisterServlet</servlet-name>
@@ -37,9 +43,57 @@
         <servlet-name>SearchPersonInfoServlet</servlet-name>
         <servlet-class>net.implementist.myFirstWebApp.SearchPersonInfoServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UpdatePersonSportsInfoServlet</servlet-name>
+        <servlet-class>net.implementist.myFirstWebApp.UpdatePersonSportsInfoServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeletePersonSportsInfoServlet</servlet-name>
+        <servlet-class>net.implementist.myFirstWebApp.DeletePersonSportsInfoServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdatePersonInfoServlet</servlet-name>
+        <servlet-class>net.implementist.myFirstWebApp.UpdatePersonInfoServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UpdateStepServlet</servlet-name>
+        <url-pattern>/UpdateStepServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdatePersonSportsInfoServlet</servlet-name>
+        <url-pattern>/UpdatePersonSportsInfoServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeletePersonSportsInfoServlet</servlet-name>
+        <url-pattern>/DeletePersonSportsInfoServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>QueryPersonSportsInfoServlet</servlet-name>
+        <url-pattern>/QueryPersonSportsInfoServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>InsertPersonSportsInfoServlet</servlet-name>
+        <url-pattern>/InsertPersonSportsInfoServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>QueryPersonSportsInfoOnSomeDayServlet</servlet-name>
+        <url-pattern>/QueryPersonSportsInfoOnSomeDayServlet</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>InsertStepServlet</servlet-name>
+        <url-pattern>/InsertStepServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SearchSomeStepServlet</servlet-name>
+        <url-pattern>/SearchSomeStepServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>QueryStepByIdServlet</servlet-name>
+        <url-pattern>/QueryStepByIdServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>RegisterServlet</servlet-name>
@@ -48,5 +102,9 @@
     <servlet-mapping>
         <servlet-name>SearchPersonInfoServlet</servlet-name>
         <url-pattern>/SearchPersonInfoServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdatePersonInfoServlet</servlet-name>
+        <url-pattern>/UpdatePersonInfoServlet</url-pattern>
     </servlet-mapping>
 </web-app>

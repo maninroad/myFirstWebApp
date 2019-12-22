@@ -29,18 +29,17 @@ public class UpdatePersonInfoServlet extends HttpServlet {
             String blood=request.getParameter("Blood").trim();
             String sitUpNumber=request.getParameter("SitupNumber").trim();
             String pushUpNumber=request.getParameter("PushupNumber").trim();
+            String pullUp=request.getParameter("PullUp").trim();
+            String age=request.getParameter("Age").trim();
+            String gender=request.getParameter("Gender").trim();
+            String heartBeat=request.getParameter("HeartBeat").trim();
             //密码验证结果
             Map<String, String> params = new HashMap<>();
             JSONObject jsonObject = new JSONObject();
             int myId=Integer.valueOf(id);
-            PersonalInfo personalInfo = PersonalInfoDAO.queryPersonalInfo(myId);
-            if (personalInfo!=null) {
+            boolean personalInfo = PersonalInfoDAO.updatePersonalInfo(myId,Double.valueOf(height),Double.valueOf(weight), Integer.valueOf(blood), Integer.valueOf(sitUpNumber), Integer.valueOf(pushUpNumber),Integer.valueOf(pullUp),Integer.valueOf(age),Integer.valueOf(gender),Integer.valueOf(heartBeat));
+            if (personalInfo) {
                 params.put("Result", "success");
-                params.put("Height",String.valueOf(personalInfo.getHeight()));
-                params.put("Weight",String.valueOf(personalInfo.getWeight()));
-                params.put("Blood",String.valueOf(personalInfo.getBlood()));
-                params.put("SitupNumber",String.valueOf(personalInfo.getSitupNumber()));
-                params.put("PushupNumber",String.valueOf(personalInfo.getPushupNumber()));
             } else {
                 params.put("Result", "failed");
             }

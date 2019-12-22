@@ -6,6 +6,42 @@ public class PersonalInfo {
     private int blood;
     private int SitupNumber;
     private int PushupNumber;
+    private int pullUp;
+    private int heartBeat;
+    private int age;
+    private int gender;
+
+    public int getAge() {
+        return age;
+    }
+
+    public int getGender() {
+        return gender;
+    }
+
+    public int getHeartBeat() {
+        return heartBeat;
+    }
+
+    public int getPullUp() {
+        return pullUp;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public void setGender(int gender) {
+        this.gender = gender;
+    }
+
+    public void setHeartBeat(int heartBeat) {
+        this.heartBeat = heartBeat;
+    }
+
+    public void setPullUp(int pullUp) {
+        this.pullUp = pullUp;
+    }
 
     public void setHeight(Double height){
         this.height=height;

@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import net.implementist.myFirstWebApp.DBmanager;
 public class UserDAO {
 
-    public static User queryUser(String userName, PrintWriter out) {
+    public static User queryUser(String userName) {
         //获得数据库的连接对象
         Connection connection = DBmanager.getConnection();
         PreparedStatement preparedStatement = null;

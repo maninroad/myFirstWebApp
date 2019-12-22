@@ -1,5 +1,7 @@
 package net.implementist.myFirstWebApp;
 
+import net.implementist.myFirstWebApp.PersonalInfo.PersonalInfoDAO;
+import net.implementist.myFirstWebApp.User.User;
 import net.implementist.myFirstWebApp.User.UserDAO;
 import net.sf.json.JSONObject;
 
@@ -26,9 +28,16 @@ public class RegisterServlet extends HttpServlet {
             JSONObject jsonObject = new JSONObject();
 
             if (verifyResult) {
-                params.put("Result", "success");
+                User user=UserDAO.queryUser(accountNumber);
+                boolean createInfo= PersonalInfoDAO.InsertPersonalInfo(user.getUserId(),0.0,0.0,0,0,0,0,10,1,0);
+                if(createInfo){
+                    params.put("Result", "success");
+                }
+                else{
+                    params.put("Result", "failed1");
+                }
             } else {
-                params.put("Result", "failed");
+                params.put("Result", "failed2");
             }
 
             jsonObject.put("params", params);

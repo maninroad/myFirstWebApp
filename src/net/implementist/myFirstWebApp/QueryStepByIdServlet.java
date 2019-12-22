@@ -2,8 +2,8 @@ package net.implementist.myFirstWebApp;
 
 import net.implementist.myFirstWebApp.PersonalInfo.PersonalInfo;
 import net.implementist.myFirstWebApp.PersonalInfo.PersonalInfoDAO;
-import net.implementist.myFirstWebApp.User.User;
-import net.implementist.myFirstWebApp.User.UserDAO;
+import net.implementist.myFirstWebApp.Step.Step;
+import net.implementist.myFirstWebApp.Step.StepDAO;
 import net.sf.json.JSONObject;
 
 import javax.servlet.ServletException;
@@ -13,13 +13,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-@WebServlet(name = "SearchPersonInfoServlet")
-public class SearchPersonInfoServlet extends HttpServlet {
+@WebServlet(name = "QueryStepByIdServlet")
+public class QueryStepByIdServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // 设置响应内容类型
         response.setContentType("text/html;charset=utf-8");
         request.setCharacterEncoding("utf-8");
         response.setCharacterEncoding("utf-8");
@@ -31,18 +31,14 @@ public class SearchPersonInfoServlet extends HttpServlet {
             Map<String, String> params = new HashMap<>();
             JSONObject jsonObject = new JSONObject();
             int myId=Integer.valueOf(id);
-            PersonalInfo personalInfo = PersonalInfoDAO.queryPersonalInfo(myId);
-            if (personalInfo!=null) {
+            ArrayList<Step> mySteps = StepDAO.queryStep(myId);
+            if (mySteps.size()!=0) {
                 params.put("Result", "success");
-                params.put("Height",String.valueOf(personalInfo.getHeight()));
-                params.put("Weight",String.valueOf(personalInfo.getWeight()));
-                params.put("Blood",String.valueOf(personalInfo.getBlood()));
-                params.put("SitupNumber",String.valueOf(personalInfo.getSitupNumber()));
-                params.put("PushupNumber",String.valueOf(personalInfo.getPushupNumber()));
-                params.put("HeartBeat",String.valueOf(personalInfo.getHeartBeat()));
-                params.put("PullUp",String.valueOf(personalInfo.getPullUp()));
-                params.put("Age",String.valueOf(personalInfo.getAge()));
-                params.put("Gender",String.valueOf(personalInfo.getGender()));
+                params.put("Number",String.valueOf(mySteps.size()));
+                for(int i=0;i<mySteps.size();i++) {
+                    params.put("Date"+ i, String.valueOf(mySteps.get(i).getDate()));
+                    params.put("StepCountNumber"+i,String.valueOf(mySteps.get(i).getStepCount()));
+                }
             } else {
                 params.put("Result", "failed");
             }
